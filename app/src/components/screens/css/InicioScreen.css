@@ -1,0 +1,28 @@
+.location__header{
+  height:60px;
+  width:100%;
+  
+}
+
+.hero-h1-inicio {
+  font-size:50px
+}
+
+.hero-bg-inicio {
+height: calc(200vh - 60px);
+background-color: #000000;
+opacity: 1;
+background-image:  radial-gradient(#bce4eb 2px, transparent 2px), radial-gradient(#bce4eb 2px, #000000 2px);
+background-size: 80px 80px;
+background-position: 0 0,40px 40px;
+
+}
+
+.hero-text-inicio {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
