@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import './css/PrivateScreen.css'
 import './css/CatalogoScreen.css'
-const baseUrl = 'http://localhost:5000'
+const baseUrl = '/api'
 const PrivateScreen = ({ history }) => {
   const [error, setError] = useState('')
   const [privateData, setPrivateData] = useState('')
@@ -21,7 +21,7 @@ const PrivateScreen = ({ history }) => {
       }
 
       try {
-        const { data } = await axios.get(`${baseUrl}/api/private`, config)
+        const { data } = await axios.get(`${baseUrl}/private`, config)
         setPrivateData(data.data)
       } catch (error) {
         window.localStorage.removeItem('authToken')
