@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import axios from 'axios'
 import './css/ForgotPasswordScreen.css'
-const baseUrl = 'http://localhost:5000'
+const baseUrl = '/api'
 const ForgotPasswordScreen = () => {
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
@@ -18,7 +18,7 @@ const ForgotPasswordScreen = () => {
 
     try {
       const { data } = await axios.post(
-        `${baseUrl}/api/auth/forgotpassword`,
+        `${baseUrl}/auth/forgotpassword`,
         { email },
         config
       )
