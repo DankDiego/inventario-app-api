@@ -7,11 +7,13 @@
     "api",
     "app"
   ],
+  "engines": {
+    "npm": "7.17.0"
+  },
   "main": "index.js",
   "scripts": {
-    "build": "npm run build --workspace=app",
+    "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=app",
     "start":"npm run start --workspace=api"
-
   },
   
   "eslintConfig": {
