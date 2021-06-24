@@ -13,7 +13,10 @@
   "main": "index.js",
   "scripts": {
     "build": "SKIP_PREFLIGHT_CHECK=true npm run build --workspace=app",
-    "start":"npm run start --workspace=api"
+    "start":"npm run start --workspace=api",
+    "server":"npm run server --workspace=api",
+    "cliente":"npm run start --workspace=app"
+
   },
   
   "eslintConfig": {
