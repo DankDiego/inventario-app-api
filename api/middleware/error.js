@@ -6,7 +6,7 @@ const errorHandler = (err, req, res, next) => {
   error.message = err.message
 
   if (err.code === 11000) {
-    const message = 'Valor de Input Duplicado'
+    const message = 'Parece que ya existe una cuenta asociada a ese E-mail'
     error = new ErrorResponse(message, 400)
   }
 
@@ -19,8 +19,6 @@ const errorHandler = (err, req, res, next) => {
     const message = Object.values(err.errors).map((val) => val.message)
     error = new ErrorResponse(message, 400)
   }
-
-  console.log(error.message)
 
   res.status(error.statusCode || 500).json({
     success: false,

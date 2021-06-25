@@ -68,14 +68,14 @@ exports.forgotPassword = async (req, res, next) => {
     await user.save()
 
     // Generamos la url de reseteo para enviarla por email
-    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`
-
+    /*  const resetUrl = `http://localhost:5000/passwordreset/${resetToken}` */
+    const RESETPASSURL = `${process.env.RESETPASSURL}/${resetToken}` || `http://localhost:5000/passwordreset/${resetToken}`
     // Mensaje HTML
     const message = `
     <h1>Has solicitado un cambio de contraseña</h1>
     <img src="https://i.pinimg.com/736x/8a/48/f3/8a48f37451972cdb6bd39a976198de94.jpg" width="420" height="420">
     <p>Por favor has una request de tipo put al siguiente link:</p>
-    <a href=${resetUrl} clicktracking=off>${resetUrl}</a>
+    <a href=${RESETPASSURL} clicktracking=off>${RESETPASSURL}</a>
     `
 
     try {
@@ -87,8 +87,6 @@ exports.forgotPassword = async (req, res, next) => {
 
       res.status(200).json({ success: true, data: 'Email enviado' })
     } catch (err) {
-      console.log(err)
-
       user.resetPasswordToken = undefined
       user.resetPasswordExpire = undefined
 
