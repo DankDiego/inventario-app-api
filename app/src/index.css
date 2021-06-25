@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap");
 
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
@@ -22,36 +25,6 @@
   background: #a5aaad;
 }
 
-.text-primary-p {
-  color: #a5aaad;
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.font-bold {
-  font-weight: 700;
-}
-
-.text-title {
-  color: #2e4a66;
-}
-
-.text-lightblue {
-  color: #469cac;
-}
-
-.text-red {
-  color: #cc3d38;
-}
-
-.text-yellow {
-  color: #a98921;
-}
-
-.text-green {
-  color: #3b9668;
-}
-
 .containerdash {
   display: grid;
   height: 100vh;
@@ -73,79 +46,10 @@
   }
 }
 
-
-
 * {
   margin: 0;
   padding: 0;
   
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.7;
-  background: #eee;
-  color: #333;
-  box-sizing: border-box;
-}
 
-.form-group,
-.form-group label,
-.form-group input {
-  width: 100%;
-  margin-bottom: 0.5rem;
-}
-
-.form-group label {
-  font-size: 0.8rem;
-}
-
-.form-group input {
-  padding: 10px 20px;
-  border: none;
-  border-bottom: 3px solid transparent;
-  background-color: #eee;
-  outline-width: 0;
-  font-size: 1rem;
-}
-
-.form-group input:focus {
-  border-bottom: 3px solid coral;
-}
-
-.btn {
-  padding: 10px 20px;
-  cursor: pointer;
-  width: 100%;
-  font-size: 1rem;
-  border: none;
-}
-
-.btn:hover {
-  opacity: 0.8;
-}
-
-.btn-primary {
-  background-color: coral;
-  color: #fff;
-}
-
-.error-message {
-  width: 100%;
-  display: inline-block;
-  padding: 5px;
-  background: red;
-  color: #fff;
-  text-align: center;
-  margin: 0.5rem 0;
-}
-
-.success-message {
-  width: 100%;
-  display: inline-block;
-  padding: 5px;
-  background: green;
-  color: #fff;
-  text-align: center;
-  margin: 0.5rem 0;
-}

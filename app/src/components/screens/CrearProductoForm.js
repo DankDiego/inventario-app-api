@@ -37,7 +37,7 @@ const CrearProductoForm = () => {
               />
             </Form.Group> */}
               <Form.Group as={Col} controlId='formGridEmail'>
-                <Form.Label>Nombre del producto:</Form.Label>
+                <Form.Label>Nombre:</Form.Label>
                 <input
                   className='form-control'
                   type='text'
@@ -117,7 +117,7 @@ const CrearProductoForm = () => {
             <Form.Row>
 
               <Form.Group as={Col} controlId='formprecioprod'>
-                <Form.Label>precioprod:</Form.Label>
+                <Form.Label>Precio:</Form.Label>
                 <input
                   className='form-control'
                   type='text'
@@ -125,7 +125,7 @@ const CrearProductoForm = () => {
                 />
               </Form.Group>
               <Form.Group as={Col} controlId='formFile'>
-                <Form.Label>Imagen del producto</Form.Label>
+                <Form.Label>Imagen/Foto</Form.Label>
                 <input
                   type='file'
                   className='form-control'

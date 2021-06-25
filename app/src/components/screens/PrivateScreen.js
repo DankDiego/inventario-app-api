@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import './css/PrivateScreen.css'
-import './css/CatalogoScreen.css'
 const baseUrl = '/api'
 const PrivateScreen = ({ history }) => {
   const [error, setError] = useState('')
@@ -42,6 +40,7 @@ const PrivateScreen = ({ history }) => {
         <main style={{ background: 'green', color: 'white' }}>
           <div className='main__container'> {privateData}
           </div>
+          <div />
         </main>
       </>
       )
