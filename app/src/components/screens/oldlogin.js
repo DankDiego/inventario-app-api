@@ -1,29 +1,115 @@
-import { Component } from 'react'
-const imgurl = 'https://images.unsplash.com/photo-1540569876033-6e5d046a1d77?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
-class NotFoundScreen extends Component {
-  render () {
-    return (
+import { useState } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+const baseUrl = '/api'
+const RegisterScreen = ({ history }) => {
+  const [username, setUsername] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmpassword, setConfirmPassword] = useState('')
+  const [error, setError] = useState('')
 
-      <div className='w-full h-screen flex'>
-        <img src={imgurl} alt='background' className='object-cover object-center h-screen w-7/12' />
-        <div className='bg-white flex flex-col justify-center items-center w-5/12 shadow-lg'>
-          <h1 className='text-3xl font-bold text-orange-500 mb-2'>LOGIN</h1>
-          <div className='w-1/2 text-center'>
-            <input
-              type='text' name='username' placeholder='username' autocomplete='off'
-              className='shadow-md border w-full h-10 px-3 py-2 text-orange-500 focus:outline-none focus:border-orange-500 mb-3 rounded'
-            />
-            <input
-              type='password' name='password' placeholder='password' autocomplete='off'
-              className='shadow-md border w-full h-10 px-3 py-2 text-orange-500 focus:outline-none focus:border-orange-500 mb-3 rounded'
-            />
-            <button className='bg-orange-500 hover:bg-orange-600 text-white px-3 py-1 rounded text-lg focus:outline-none shadow'>Sign In</button>
-          </div>
-        </div>
-      </div>
+  const registerHandler = async (e) => {
+    e.preventDefault()
 
-    )
+    const config = {
+      header: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    if (password !== confirmpassword) {
+      setPassword('')
+      setConfirmPassword('')
+      setTimeout(() => {
+        setError('')
+      }, 5000)
+      return setError('Passwords do not match')
+    }
+
+    try {
+      const { data } = await axios.post(
+        `${baseUrl}/auth/register`,
+        {
+          username,
+          email,
+          password
+        },
+        config
+      )
+
+      window.localStorage.setItem('authToken', data.token)
+
+      history.push('/')
+    } catch (error) {
+      setError(error.response.data.error)
+      setTimeout(() => {
+        setError('')
+      }, 5000)
+    }
   }
+
+  return (
+    <div className='register-screen'>
+      <form onSubmit={registerHandler} className='register-screen__form'>
+        <h3 className='register-screen__title'>Register</h3>
+        {error && <span className='error-message'>{error}</span>}
+        <div className='form-group'>
+          <label htmlFor='name'>Username:</label>
+          <input
+            type='text'
+            required
+            id='name'
+            placeholder='Enter username'
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='email'>Email:</label>
+          <input
+            type='email'
+            required
+            id='email'
+            placeholder='Email address'
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='password'>Password:</label>
+          <input
+            type='password'
+            required
+            id='password'
+            autoComplete='true'
+            placeholder='Enter password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className='form-group'>
+          <label htmlFor='confirmpassword'>Confirm Password:</label>
+          <input
+            type='password'
+            required
+            id='confirmpassword'
+            autoComplete='true'
+            placeholder='Confirm password'
+            value={confirmpassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+          />
+        </div>
+        <button type='submit' className='btn btn-primary'>
+          Register
+        </button>
+
+        <span className='register-screen__subtext'>
+          Already have an account? <Link to='/login'>Login</Link>
+        </span>
+      </form>
+    </div>
+  )
 }
 
-export default NotFoundScreen
+export default RegisterScreen

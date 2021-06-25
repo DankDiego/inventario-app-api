@@ -11,7 +11,7 @@ const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     required: [true, 'Por favor ingrese un correo electronico'],
-    unique: true,
+    unique: [true, 'Ya existe alguien registrado con este email'],
     match: [
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
       'Por favor ingrese un correo valido'
@@ -20,7 +20,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, 'Por favor ingrese una contraseña'],
-    minlength: 6,
+    minlength: [6, 'Por favor ingrese una contraseña mayor a 6 caracteres'],
     select: false
   },
   resetPasswordToken: String,

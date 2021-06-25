@@ -11,7 +11,6 @@ const productosRouter = require('./controllers/productos')
 app.use(cors())
 app.use(express.static(path.join(rutamonorepo)))
 app.use(express.json())
-console.log(rutamonorepo)
 // Llamamos a la funcion que conecta la BD
 connectDB()
 
