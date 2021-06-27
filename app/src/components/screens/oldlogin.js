@@ -1,115 +1,84 @@
-import { useState } from 'react'
-import axios from 'axios'
-import { Link } from 'react-router-dom'
-const baseUrl = '/api'
-const RegisterScreen = ({ history }) => {
-  const [username, setUsername] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [confirmpassword, setConfirmPassword] = useState('')
-  const [error, setError] = useState('')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { useForm } from 'react-hook-form'
 
-  const registerHandler = async (e) => {
-    e.preventDefault()
+import './styles.css'
 
-    const config = {
-      header: {
-        'Content-Type': 'application/json'
-      }
-    }
-
-    if (password !== confirmpassword) {
-      setPassword('')
-      setConfirmPassword('')
-      setTimeout(() => {
-        setError('')
-      }, 5000)
-      return setError('Passwords do not match')
-    }
-
-    try {
-      const { data } = await axios.post(
-        `${baseUrl}/auth/register`,
-        {
-          username,
-          email,
-          password
-        },
-        config
-      )
-
-      window.localStorage.setItem('authToken', data.token)
-
-      history.push('/')
-    } catch (error) {
-      setError(error.response.data.error)
-      setTimeout(() => {
-        setError('')
-      }, 5000)
-    }
+function App () {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm()
+  const onSubmit = (data) => {
+    console.log(data)
+  }
+  const intialValues = {
+    firstName: 'bill',
+    lastName: 'luonn',
+    email: 'bluebill1049@hotmail.com',
+    age: -1
   }
 
   return (
-    <div className='register-screen'>
-      <form onSubmit={registerHandler} className='register-screen__form'>
-        <h3 className='register-screen__title'>Register</h3>
-        {error && <span className='error-message'>{error}</span>}
-        <div className='form-group'>
-          <label htmlFor='name'>Username:</label>
-          <input
-            type='text'
-            required
-            id='name'
-            placeholder='Enter username'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='email'>Email:</label>
-          <input
-            type='email'
-            required
-            id='email'
-            placeholder='Email address'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='password'>Password:</label>
-          <input
-            type='password'
-            required
-            id='password'
-            autoComplete='true'
-            placeholder='Enter password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className='form-group'>
-          <label htmlFor='confirmpassword'>Confirm Password:</label>
-          <input
-            type='password'
-            required
-            id='confirmpassword'
-            autoComplete='true'
-            placeholder='Confirm password'
-            value={confirmpassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-          />
-        </div>
-        <button type='submit' className='btn btn-primary'>
-          Register
-        </button>
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <label htmlFor='firstName'>First Name</label>
+      <input
+        defaultValue={intialValues.firstName}
+        placeholder='bill'
+        {...register('firstName', {
+          validate: (value) => value !== 'bill'
+        })}
+      />
+      {errors.firstName && <p>Your name is not bill</p>}
 
-        <span className='register-screen__subtext'>
-          Already have an account? <Link to='/login'>Login</Link>
-        </span>
-      </form>
-    </div>
+      <label htmlFor='lastName'>Last Name</label>
+      <input
+        defaultValue={intialValues.lastName}
+        placeholder='luo'
+        {...register('lastName', {
+          validate: {
+            validatemin: (value) => value.length > 3,
+            validatemax: (value) => value.length < 7
+          }
+        })}
+      />
+      {errors.lastName && errors.lastName.type === 'validatemin' && (
+        <p>Minimo 4</p>
+      )}
+      {errors.lastName && errors.lastName.type === 'validatemax' && (
+        <p>menor a 7</p>
+      )}
+      <label htmlFor='email'>Email</label>
+      <input
+        defaultValue={intialValues.email}
+        placeholder='bluebill1049@hotmail.com'
+        type='email'
+        {...register('email')}
+      />
+      <label htmlFor='age'>Age</label>
+      <input
+        defaultValue={intialValues.age}
+        placeholder='0'
+        type='text'
+        {...register('age', {
+          validate: {
+            positiveNumber: (value) => parseFloat(value) > 0,
+            lessThanHundred: (value) => parseFloat(value) < 200
+          }
+        })}
+      />
+      {errors.age && errors.age.type === 'positiveNumber' && (
+        <p>Your age is invalid</p>
+      )}
+      {errors.age && errors.age.type === 'lessThanHundred' && (
+        <p>Your age should be greater than 200</p>
+      )}
+
+      <input type='submit' />
+    </form>
   )
 }
 
-export default RegisterScreen
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App />, rootElement)
