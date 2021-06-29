@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react'
 import swal from 'sweetalert2'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import tech2 from '../../statics/tech-home2.png'
 const baseUrl = '/api'
 const LoginScreen = ({ history }) => {
+  const tech2 = 'https://res.cloudinary.com/dsulcam/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1624954179/tech-home2_hmkvwm.jpg'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   /* const [error, setError] = useState('') */

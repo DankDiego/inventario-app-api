@@ -2,9 +2,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import swal from 'sweetalert2'
 import { Link } from 'react-router-dom'
-import chikapass from '../../statics/chikapass.gif'
 const baseUrl = '/api'
 const ForgotPasswordScreen = () => {
+  const tech2 = 'https://res.cloudinary.com/dsulcam/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1624954179/tech-home2_hmkvwm.jpg'
   const [email, setEmail] = useState('')
   /* const [error, setError] = useState('')
   const [success, setSuccess] = useState('') */
@@ -99,7 +99,7 @@ const ForgotPasswordScreen = () => {
               <div
                 className='w-full h-auto bg-black hidden lg:block lg:w-1/2 bg-cover rounded-r-lg'
                 style={{
-                  backgroundImage: `url(${chikapass})`
+                  backgroundImage: `url(${tech2})`
                 }}
               />
             </div>

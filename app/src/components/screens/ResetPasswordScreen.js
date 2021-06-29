@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import tech2 from '../../statics/tech-home2.png'
 import swal from 'sweetalert2'
 const baseUrl = '/api'
 
 const ResetPasswordScreen = ({ history, match }) => {
+  const tech2 = 'https://res.cloudinary.com/dsulcam/image/upload/w_1000,ar_1:1,c_fill,g_auto,e_art:hokusai/v1624954179/tech-home2_hmkvwm.jpg'
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
