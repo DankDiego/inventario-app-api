@@ -12,13 +12,7 @@ const CatalogoScreen = ({ history }) => {
       }
     }
     loadProductos()
-    /* axios
-      .get(baseUrl)
-      .then(res => {
-        setProductos(res.data)
-        console.log(res.data)
-      })
-      .catch((err) => { console.log(err) }) */
+      .catch((err) => { console.log(err) })
   }, [])
   return (
     <>

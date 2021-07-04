@@ -7,6 +7,7 @@ export async function getProductos () {
       url: `${baseUrl}/productos`,
       method: 'GET'
     })
+    console.log('ñeee')
     return response
   } catch (e) {
     console.log(e)

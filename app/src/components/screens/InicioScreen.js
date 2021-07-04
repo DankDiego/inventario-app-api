@@ -3,27 +3,27 @@ const InicioScreen = ({ history }) => {
   return (
     <>
       <div>
-        <div class='bg-black text-white py-2'>
-          <div class='container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24'>
-            <div class='flex flex-col w-full lg:w-1/3 justify-center items-start p-8'>
-              <h1 class='text-3xl md:text-5xl p-2 text-yellow-300 tracking-loose'>JPT S.A.C.</h1>
-              <h2 class='text-3xl md:text-5xl leading-relaxed md:leading-snug mb-2'>Tenemos los mejores equipos de telefonia movil
+        <div className='bg-black text-white py-2'>
+          <div className='container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24'>
+            <div className='flex flex-col w-full lg:w-1/3 justify-center items-start p-8'>
+              <h1 className='text-3xl md:text-5xl p-2 text-yellow-300 tracking-loose'>JPT S.A.C.</h1>
+              <h2 className='text-3xl md:text-5xl leading-relaxed md:leading-snug mb-2'>Tenemos los mejores equipos de telefonia movil
               </h2>
-              <p class='text-sm md:text-base text-gray-50 mb-4'>Somos importadores de telefonos moviles de las mejores marcas, nuestros productos son libres de operador y trabajan con cualquier red movil peruana.
+              <p className='text-sm md:text-base text-gray-50 mb-4'>Somos importadores de telefonos moviles de las mejores marcas, nuestros productos son libres de operador y trabajan con cualquier red movil peruana.
               </p>
 
-              <Link to='/catalogo' class='bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent'>
+              <Link to='/catalogo' className='bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent'>
                 Ver Productos
               </Link>
             </div>
-            <div class='p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center'>
-              <div class='h-48 flex flex-wrap content-center'>
+            <div className='p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center'>
+              <div className='h-48 flex flex-wrap content-center'>
 
                 <div>
-                  <img class='inline-block mt-24 md:mt-0 p-8 md:p-0' src='https://res.cloudinary.com/dsulcam/image/upload/v1624951043/astro1_copia_qwbgaj.png' />
+                  <img className='inline-block mt-24 md:mt-0 p-8 md:p-0' src='https://res.cloudinary.com/dsulcam/image/upload/v1624951043/astro1_copia_qwbgaj.png' />
                 </div>
                 <div>
-                  <img class='inline-block mt-28 hidden lg:block' src='https://res.cloudinary.com/dsulcam/image/upload/v1624951966/apple_cwzk56.png' />
+                  <img className='inline-block mt-28 hidden lg:block' src='https://res.cloudinary.com/dsulcam/image/upload/v1624951966/apple_cwzk56.png' />
                 </div>
               </div>
             </div>
@@ -32,25 +32,25 @@ const InicioScreen = ({ history }) => {
       </div>
 
       <div>
-        <div class='bg-black text-white p-1'>
-          <div class='container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24'>
+        <div className='bg-black text-white p-1'>
+          <div className='container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24'>
 
-            <div class='p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center'>
-              <div class='h-48 flex flex-wrap content-center'>
+            <div className='p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center'>
+              <div className='h-48 flex flex-wrap content-center'>
 
                 <div>
-                  <img class='inline-block mt-24 md:mt-0 p-8 md:p-0' src='https://res.cloudinary.com/dsulcam/image/upload/v1624952089/gadgets_anun93.jpg' />
+                  <img className='inline-block mt-24 md:mt-0 p-8 md:p-0' src='https://res.cloudinary.com/dsulcam/image/upload/v1624952089/gadgets_anun93.jpg' />
                 </div>
 
               </div>
             </div>
-            <div class='flex flex-col w-full lg:w-1/3 justify-center items-start p-8'>
-              <h1 class='text-3xl md:text-5xl p-2 text-yellow-300 tracking-loose'>Buscas Accesorios?</h1>
-              <h2 class='text-3xl md:text-5xl leading-relaxed md:leading-snug mb-2'>Tenemos los mejores gadgets para ti
+            <div className='flex flex-col w-full lg:w-1/3 justify-center items-start p-8'>
+              <h1 className='text-3xl md:text-5xl p-2 text-yellow-300 tracking-loose'>Buscas Accesorios?</h1>
+              <h2 className='text-3xl md:text-5xl leading-relaxed md:leading-snug mb-2'>Tenemos los mejores gadgets
               </h2>
-              <p class='text-sm md:text-base text-gray-50 mb-4'>Contamos con accesorios y gadgets de calidad, desde cables de datos hasta drones, si estas buscando un accesorio en especifico háznoslo saber.
+              <p className='text-sm md:text-base text-gray-50 mb-4'>Contamos con accesorios y gadgets de calidad, desde cables de datos hasta drones, si estas buscando un accesorio en especifico háznoslo saber.
               </p>
-              <Link to='/catalogo' class='bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent'>
+              <Link to='/catalogo' className='bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent'>
                 Ver Productos
               </Link>
             </div>
@@ -61,7 +61,7 @@ const InicioScreen = ({ history }) => {
       <div className='w-full min-h-screen flex items-center justify-center bg-black'>
         <div className='md:w-2/3 w-full px-4 text-white flex flex-col'>
           <div className='w-full text-7xl font-bold text-yellow-300'>
-            <h1 className='w-full md:w-2/3'>Nuestra vision como empresa:
+            <h1 className='text-3xl md:text-5xl p-2 text-yellow-300 tracking-loose'>Nuestra vision como empresa:
             </h1>
           </div>
           <div className='flex mt-8 flex-col md:flex-row md:justify-between'>
@@ -69,7 +69,7 @@ const InicioScreen = ({ history }) => {
               Ser líder a nivel Nacional para nuestros clientes que buscan nuevas tendencias tecnológicas y valoran la calidad en el mercado, manteniendo una política de generación competitiva sosteniendo nuestra imagen de calidad y servicio.
             </p>
             <div className='w-44 pt-6 md:pt-0'>
-              <Link to='/' class='bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent'>
+              <Link to='/' className='bg-transparent hover:bg-yellow-300 text-yellow-300 hover:text-white rounded shadow hover:shadow-lg py-2 px-4 border border-yellow-300 hover:border-transparent'>
                 Contactanos
               </Link>
             </div>
