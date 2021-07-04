@@ -5,40 +5,6 @@ const ErrorResponse = require('../utils/errorResponse')
 const upload = require('../utils/multer')
 const cloudinary = require('../utils/cloudinary')
 
-/* const storage = multer.diskStorage({
-  destination: (req, file, callback) => {
-    callback(null, './public/uploads')
-  },
-  filename: (req, file, callback) => {
-    callback(null, file.originalname)
-  }
-})
-
-const upload = multer({ storage: storage }) */
-
-/* productosRouter.post('/', upload.single('image'), (req, res, next) => {
-  const result = cloudinary.uploader.upload(req.file.path)
-  console.log(result.public_id)
-  const newProducto = new Producto({
-    nombreproducto: req.body.nombreproducto,
-    precioprod: req.body.precioprod,
-    fabricante: req.body.fabricante,
-    tipo: req.body.tipo,
-    codigoprod: req.body.codigoprod,
-    estadoprod: req.body.estadoprod,
-    colorprod: req.body.codigoprod,
-    cantidadprod: req.body.cantidadprod,
-    capacidadprod: req.body.capacidadprod,
-    descripcionprod: req.body.descripcionprod,
-    productoImage: result.public_id,
-    fecharegistroprod: new Date()
-  })
-  newProducto
-    .save()
-    .then(() => res.json('Articulo nuevo Creado'))
-    .catch((err) => res.status(400).json(`Error: ${err}`))
-}) */
-
 // Registro de producto
 productosRouter.post('/', upload.single('image'), async (req, res, next) => {
   try {

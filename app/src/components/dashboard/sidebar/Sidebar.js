@@ -33,6 +33,10 @@ const Sidebar = ({ sidebarOpen, closeSidebar, history }) => {
           <i className='fa fa-plus' />
           <Link to='/dashboard/crearproducto'>Registrar Producto</Link>
         </div>
+        <div className='sidebar__link'>
+          <i className='fa fa-plus' />
+          <Link to='/dashboard/listaproducto'>Lista de Producto</Link>
+        </div>
 
         <h2><i className='fas fa-users-cog' /> Administrar Usuarios</h2>
         <div className='sidebar__link'>

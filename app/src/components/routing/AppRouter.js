@@ -13,7 +13,7 @@ import ResetPasswordScreen from '../screens/ResetPasswordScreen'
 import InicioScreen from '../screens/InicioScreen'
 import CatalogoScreen from '../screens/CatalogoScreen'
 import CrearProductoScreen from '../screens/CrearProductoScreen'
-
+import ProductosScreen from '../screens/ProductosScreen'
 export default function AppRouter () {
   return (
     <Router>
@@ -28,6 +28,7 @@ export default function AppRouter () {
         <PublicRoute exact path='/catalogo' component={CatalogoScreen} />
         <PrivateRoute exact path='/dashboard' component={PrivateScreen} />
         <PrivateRoute exact path='/dashboard/CrearProducto' component={CrearProductoScreen} />
+        <PrivateRoute exact path='/dashboard/ListaProducto' component={ProductosScreen} />
         <Route path='*' component={NotFoundScreen} />
       </Switch>
 
