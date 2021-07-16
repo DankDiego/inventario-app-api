@@ -1,4 +1,5 @@
 import './Sidebar.css'
+import React from 'react'
 import logo from '../../../statics/logo.svg'
 import { Link } from 'react-router-dom'
 const Sidebar = ({ sidebarOpen, closeSidebar, history }) => {

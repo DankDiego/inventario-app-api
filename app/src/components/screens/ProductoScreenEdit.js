@@ -1,16 +1,44 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import { saveProducto } from '../services/ProductoService'
-
-const CrearProductoForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm()
-
+import { getProducto, updateProducto } from '../services/ProductoService'
+import { useParams, Link } from 'react-router-dom'
+const ProductosScreenEdit = () => {
+  const { register, setValue, handleSubmit, formState: { errors } } = useForm()
+  const { id } = useParams()
+  console.log(id)
+  useEffect(() => {
+    if (id) {
+      async function loadProducto () {
+        const response = await getProducto(id)
+        if (response.status === 200) {
+          setValue('nombreproducto', response.data.nombreproducto, { shouldValidate: true })
+          setValue('fabricante', response.data.fabricante, { shouldValidate: true })
+          setValue('tipo', response.data.tipo, { shouldValidate: true })
+          setValue('precioprod', response.data.precioprod, { shouldValidate: true })
+          setValue('cantidadprod', response.data.cantidadprod, { shouldValidate: true })
+          setValue('codigoprod', response.data.codigoprod, { shouldValidate: true })
+          setValue('capacidadprod', response.data.capacidadprod, { shouldValidate: true })
+          setValue('colorprod', response.data.colorprod, { shouldValidate: true })
+          setValue('estadoprod', response.data.estadoprod, { shouldValidate: true })
+          setValue('descripcionprod', response.data.descripcionprod, { shouldValidate: true })
+          setValue('objidproducto', response.data.id, { shouldValidate: true })
+          console.log(response.data)
+        }
+      }
+      loadProducto()
+        .catch((err) => { console.log(err) })
+      // get user and set form fields
+      /*  userService.getById(id).then(user => {
+        const fields = ['title', 'firstName', 'lastName', 'email', 'role']
+        fields.forEach(field => setValue(field, user[field]))
+        setUser(user)
+      }) */
+    }
+  }, [])
   const onSubmit = (data, e) => {
-    saveProducto(data)
-    e.target.reset()
-    e.target.reset()
-    e.target.reset()
+    updateProducto(data)
   }
+
   return (
     <main>
 
@@ -33,6 +61,7 @@ const CrearProductoForm = () => {
                         <label className='mb-1'>Producto</label>
                         {errors.nombreproducto && <p className='text-red-600'>{errors.nombreproducto.message}</p>}
                         <input
+                          name='nombreproducto'
                           placeholder='nombre'
                           className='py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600'
                           type='text'
@@ -181,8 +210,8 @@ const CrearProductoForm = () => {
                               message: 'Maximo de 20 caracteres'
                             },
                             pattern: {
-                              value: /^[a-zA-Z ]*$/,
-                              message: 'Solo letras y espacios'
+                              value: /^[a-zA-Z,/ ]*$/,
+                              message: 'Solo letras, comas, slash y espacios'
                             }
                           })}
                         />
@@ -204,12 +233,12 @@ const CrearProductoForm = () => {
                               message: 'Minimo 3 caracteres'
                             },
                             maxLength: {
-                              value: 20,
-                              message: 'Maximo de 20 caracteres'
+                              value: 50,
+                              message: 'Maximo de 50 caracteres'
                             },
                             pattern: {
-                              value: /^[a-zA-Z0-9 ]*$/,
-                              message: 'Solo numero, letras y espacios'
+                              value: /^[a-zA-Z0-9, ]*$/,
+                              message: 'Solo numero, comas, letras y espacios'
                             }
                           })}
                         />
@@ -232,7 +261,7 @@ const CrearProductoForm = () => {
                             },
                             pattern: {
                               value: /^[a-zA-Z, ]*$/,
-                              message: 'Solo numero, letras y espacios'
+                              message: 'Solo letras y espacios'
                             }
                           })}
                         />
@@ -254,37 +283,37 @@ const CrearProductoForm = () => {
                               message: 'Minimo 6 caracteres'
                             },
                             maxLength: {
-                              value: 20,
+                              value: 120,
                               message: 'Maximo de 120 caracteres'
                             },
                             pattern: {
-                              value: /^[a-zA-Z0-9,/ ]*$/,
-                              message: 'Solo letras, comas, diagonales y espacios'
+                              value: /^[a-zA-Z0-9,/. ]*$/,
+                              message: 'Solo letras, puntos, comas, diagonales y espacios'
                             }
                           })}
                           className='py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600'
                         />
                       </div>
-                      <div className='flex flex-col w-3/6 px-2'>
-                        <label className='mb-1'>Imagen</label>
-                        {errors.image && <p className='text-red-600'>{errors.image.message}</p>}
-                        <input
-                          className='py-3 px-5 rounded focus:outline-none text-gray-600 focus:text-gray-600'
-                          type='file'
-                          {...register('image', {
-                            required: '*Selecciona una imagen'
-
-                          })}
-                        />
-                      </div>
                     </div>
                     <div className='flex items-center justify-between mb-5 text-right'>
                       <div className='flex flex-col text-right w-3/6 px-2'>
-                        <input readOnly hidden type='text' id='idprod' className='rounded focus:outline-none text-gray-600 focus:text-gray-600' />
+                        <input hidden readOnly type='text' {...register('objidproducto')} className='rounded focus:outline-none text-gray-600 focus:text-gray-600' />
 
                       </div>
-                      <button className='border-2 border-transparent bg-green-500 ml-3 py-2 px-4 font-bold uppercase text-black rounded transition-all hover:border-green-500 hover:bg-transparent hover:text-green-500'>Guardar</button>
-
+                      <div>
+                        <button type='submit' className='border-2 border-transparent bg-green-500 ml-3 py-2 px-4 font-bold uppercase text-black rounded transition-all hover:border-green-500 hover:bg-transparent hover:text-green-500'>
+                          <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                            <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z' />
+                          </svg>
+                        </button>
+                        <button type='button' className='border-2 border-transparent bg-red-500 ml-3 py-2 px-4 font-bold uppercase text-black rounded transition-all hover:border-red-500 hover:bg-transparent hover:text-red-500'>
+                          <Link to='/dashboard/listaproducto'>
+                            <svg xmlns='http://www.w3.org/2000/svg' className='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                              <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0019 16V8a1 1 0 00-1.6-.8l-5.333 4zM4.066 11.2a1 1 0 000 1.6l5.334 4A1 1 0 0011 16V8a1 1 0 00-1.6-.8l-5.334 4z' />
+                            </svg>
+                          </Link>
+                        </button>
+                      </div>
                     </div>
 
                   </div>
@@ -304,4 +333,4 @@ const CrearProductoForm = () => {
     </main>
   )
 }
-export default CrearProductoForm
+export default ProductosScreenEdit

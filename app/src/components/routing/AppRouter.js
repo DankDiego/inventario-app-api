@@ -1,10 +1,10 @@
+import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 // Routing
 import PrivateRoute from '../routing/PrivateRoute'
 import PublicRoute from '../routing/PublicRoute'
 import NotFoundScreen from '../screens/404'
 // Screens
-import 'bootstrap/dist/css/bootstrap.min.css'
 import PrivateScreen from '../screens/PrivateScreen'
 import LoginScreen from '../screens/LoginScreen'
 import RegisterScreen from '../screens/RegisterScreen'
@@ -14,6 +14,7 @@ import InicioScreen from '../screens/InicioScreen'
 import CatalogoScreen from '../screens/CatalogoScreen'
 import CrearProductoScreen from '../screens/CrearProductoScreen'
 import ProductosScreen from '../screens/ProductosScreen'
+import ProductoScreenEdit from '../screens/ProductoScreenEdit'
 export default function AppRouter () {
   return (
     <Router>
@@ -29,6 +30,7 @@ export default function AppRouter () {
         <PrivateRoute exact path='/dashboard' component={PrivateScreen} />
         <PrivateRoute exact path='/dashboard/CrearProducto' component={CrearProductoScreen} />
         <PrivateRoute exact path='/dashboard/ListaProducto' component={ProductosScreen} />
+        <PrivateRoute exact path='/dashboard/ListaProducto/edit/:id' component={ProductoScreenEdit} />
         <Route path='*' component={NotFoundScreen} />
       </Switch>
 

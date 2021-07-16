@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import React from 'react'
 const InicioScreen = ({ history }) => {
   return (
     <>
@@ -23,7 +24,7 @@ const InicioScreen = ({ history }) => {
                   <img className='inline-block mt-24 md:mt-0 p-8 md:p-0' src='https://res.cloudinary.com/dsulcam/image/upload/v1624951043/astro1_copia_qwbgaj.png' />
                 </div>
                 <div>
-                  <img className='inline-block mt-28 hidden lg:block' src='https://res.cloudinary.com/dsulcam/image/upload/v1624951966/apple_cwzk56.png' />
+                  <img className='inline-block mt-28  lg:block' src='https://res.cloudinary.com/dsulcam/image/upload/v1624951966/apple_cwzk56.png' />
                 </div>
               </div>
             </div>

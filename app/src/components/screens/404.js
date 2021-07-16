@@ -1,4 +1,5 @@
-import { Component } from 'react'
+import React, { Component } from 'react'
+
 import chika from '../../statics/chika.png'
 import { Link } from 'react-router-dom'
 class NotFoundScreen extends Component {

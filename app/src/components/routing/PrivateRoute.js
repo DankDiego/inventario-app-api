@@ -1,3 +1,4 @@
+import React from 'react'
 import { Redirect, Route } from 'react-router-dom'
 import DashLayout from '../Layouts/DashLayout'
 const PrivateRoute = ({ component: Component, ...rest }) => {

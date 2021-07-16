@@ -1,4 +1,5 @@
 import './Navbar.css'
+import React from 'react'
 import avatar from '../../../statics/logo.svg'
 
 const Navbar = ({ sidebarOpen, openSidebar }) => {

@@ -13,7 +13,7 @@ app.use(express.static(path.join(rutamonorepo)))
 app.use(express.json())
 // Llamamos a la funcion que conecta la BD
 connectDB()
-
+// SABAGEBU
 // Conectando rutas
 app.use('/api/auth', require('./routes/auth'))
 app.use('/api/private', require('./routes/private'))

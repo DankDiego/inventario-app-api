@@ -24,8 +24,7 @@ productosRouter.post('/', upload.single('image'), async (req, res, next) => {
       fecharegistroprod: new Date()
     })
     await newProducto.save()
-    res.json('Articulo nuevo Creado')
-    console.log('Articulo Creado')
+    res.json('Articulo nuevo Creado').end()
   } catch (err) {
     next(err)
   }
@@ -34,7 +33,7 @@ productosRouter.post('/', upload.single('image'), async (req, res, next) => {
 productosRouter.get('/', async (req, res, next) => {
   try {
     const productos = await Producto.find({})
-    res.json(productos)
+    res.json(productos).end()
   } catch (err) {
     next(err)
   }
@@ -44,7 +43,7 @@ productosRouter.get('/:id', async (req, res, next) => {
   const { id } = req.params
   Producto.findById(id)
     .then(producto => {
-      if (producto) { return res.json(producto) } else { return next(new ErrorResponse('No se pudo encontrar el producto', 404)) }
+      if (producto) { return res.json(producto).end() } else { return next(new ErrorResponse('No se pudo encontrar el producto', 404)) }
     })
     .catch(err => {
       next(err)
@@ -53,7 +52,7 @@ productosRouter.get('/:id', async (req, res, next) => {
 
 productosRouter.delete('/:id', async (req, res, next) => {
   const { id } = req.params
-  const deleting = await Producto.findOneAndDelete(id)
+  const deleting = await Producto.findByIdAndDelete(id)
   if (deleting === null) return res.sendStatus(404)
   res.status(204).end()
   console.log('Producto ha sido eliminado')
@@ -63,7 +62,7 @@ productosRouter.delete('/:id', async (req, res, next) => {
 productosRouter.put('/:id', async (req, res, next) => {
   const { id } = req.params
   Producto.findOneAndUpdate({ _id: id }, { $set: req.body }, { new: true }).then(result => {
-    res.json(result)
+    res.json(result).end()
   })
     .catch(next)
 })
